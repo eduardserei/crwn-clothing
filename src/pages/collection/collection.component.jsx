@@ -5,8 +5,9 @@ import CollectionItem from "../../components/collection-item/collection-item.com
 
 import './collection.styles.scss';
 
-const CollectionPage = ({ match, collection }) => { 
+const CollectionPage = ({ collection }) => { 
     const { title, items } = collection;
+
     return (
         <div className="collection-page">
             <div className="title">{title}</div>
@@ -19,12 +20,10 @@ const CollectionPage = ({ match, collection }) => {
             </div>
         </div>
     )   
-}
+};
 
-const mapStateToProps = (state, ownProps) =>
-// ownProps === props of component wrapped in connect
-({
+const mapStateToProps = (state, ownProps) => ({
     collection: selectCollection(ownProps.match.params.collectionId)(state)
-})
+});
 
 export default connect(mapStateToProps)(CollectionPage);
